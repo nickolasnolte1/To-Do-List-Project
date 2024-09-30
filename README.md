@@ -36,7 +36,7 @@ graph TD;
     A --> C[requirements.txt - Dependencias del proyecto]
     A --> D[templates/ - Contiene las plantillas HTML]
     D --> E[index.html]
-    A --> F[static/ - Archivos estáticos (CSS, imágenes, etc.)]
+    A --> F[static/ - Archivos estáticos CSS e imágenes]
     F --> G[style.css]
     A --> H[todo.db - Base de datos SQLite]
     A --> I[Dockerfile - Archivo para contenerizar la aplicación con Docker]
