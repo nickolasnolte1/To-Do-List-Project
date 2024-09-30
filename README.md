@@ -1,5 +1,4 @@
 # Cloud Inhouse & Infrastructure
-# To-Do-List
 
 # To-Do List App
 
@@ -21,18 +20,10 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 - Flask-SQLAlchemy
 - Docker (opcional para contenerización)
 
-## Instalación y ejecución sin Docker
 
-1. **Clonar el repositorio**:
-
-   ```bash
-   git clone https://github.com/tuusuario/todo-app.git
-   cd todo-app
 
 # Estructura del proyecto 
 <img width="681" alt="image" src="https://github.com/user-attachments/assets/837efa00-f14d-4ad3-bc53-4f7393ccb388">
-
-
 
 
 # Contenerización con Docker
