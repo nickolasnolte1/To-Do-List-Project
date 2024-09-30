@@ -31,21 +31,21 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 # Estructura del proyecto 
 ToDoApp/
-|
+
 ├── app.py
-|
+
 ├── requirements.txt
-|
+
 ├── templates/
-|   |
+
 │   └── index.html
-|
+
 ├── static/
-|   |
+
 │   └── style.css
-|
+
 ├── todo.db
-|
+
 └── Dockerfile
 
 
