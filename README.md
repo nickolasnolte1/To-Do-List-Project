@@ -22,7 +22,8 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 
 # Estructura del proyecto 
-<img width="565" alt="image" src="https://github.com/user-attachments/assets/8be79efe-c12c-4939-8f8c-8875ddc614c1">
+<img width="692" alt="image" src="https://github.com/user-attachments/assets/bc56cf54-1d20-41a2-921d-4e9fe249ff2e">
+
 
 # Contenerización con Docker
 Para ejecutar la aplicación utilizando contenedores de Docker, seguir estos pasos:
