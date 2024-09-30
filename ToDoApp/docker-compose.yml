@@ -4,17 +4,31 @@ services:
     build: ./frontend
     container_name: frontend-container
     ports:
-      - "8080:80"  # Serve frontend on port 8080
+      - "8080:80"
     networks:
       - app-network
 
   backend:
     build: ./backend
     container_name: backend-container
-    volumes:
-      - ./backend/instance:/app/instance  # Mount the SQLite database
     ports:
-      - "5050:5050"  # Map backend API port 5050 to the host
+      - "5050:5050"
+    networks:
+      - app-network
+    environment:
+      - DATABASE_URL=postgresql://todo_user:todo_password@database:5432/todo_db
+
+  database:
+    image: postgres:latest
+    container_name: database-container
+    environment:
+      POSTGRES_USER: todo_user
+      POSTGRES_PASSWORD: todo_password
+      POSTGRES_DB: todo_db
+    volumes:
+      - ./database_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     networks:
       - app-network
 
