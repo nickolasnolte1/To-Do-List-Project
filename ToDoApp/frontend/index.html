@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            width: 15%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .delete {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .delete:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+
+        <!-- Form to add a new task -->
+        <form id="add-task-form">
+            <input type="text" id="task-title" placeholder="Nueva tarea" required>
+            <button type="submit">Añadir</button>
+        </form>
+
+        <!-- Task list -->
+        <ul id="todo-list"></ul>
+    </div>
+
+    <script>
+        function fetchTasks() {
+    fetch("http://localhost:5050/api/todos")  // Use localhost instead of backend
+        .then(response => response.json())
+        .then(data => {
+            const list = document.getElementById('todo-list');
+            list.innerHTML = '';  // Clear the list
+            data.forEach(task => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    ${task.title}
+                    <button onclick="deleteTask(${task.id})" class="delete">Borrar</button>
+                `;
+                list.appendChild(listItem);
+            });
+        })
+        .catch(err => console.error('Error fetching tasks:', err));
+    }
+
+        document.getElementById('add-task-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const title = document.getElementById('task-title').value;
+            fetch("http://localhost:5050/api/add", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ title: title })
+            })
+            .then(response => response.json())
+            .then(() => {
+                document.getElementById('task-title').value = '';  // Clear input
+                fetchTasks();  // Refresh the task list
+            })
+            .catch(err => console.error('Error adding task:', err));
+        });
+
+        // Function to handle deleting a task
+        function deleteTask(id) {
+            fetch(`http://localhost:5050/api/delete/${id}`, {
+                method: 'DELETE'
+            })
+            .then(() => fetchTasks())  // Refresh the task list after deleting
+            .catch(err => console.error('Error deleting task:', err));
+        }
+
+        // Fetch tasks on page load
+        fetchTasks();
+    </script>
+</body>
+</html>

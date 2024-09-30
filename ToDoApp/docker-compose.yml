@@ -1,0 +1,23 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend-container
+    ports:
+      - "8080:80"  # Serve frontend on port 8080
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    container_name: backend-container
+    volumes:
+      - ./backend/instance:/app/instance  # Mount the SQLite database
+    ports:
+      - "5050:5050"  # Map backend API port 5050 to the host
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
