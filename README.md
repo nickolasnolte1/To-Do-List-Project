@@ -1,5 +1,4 @@
 # Cloud Inhouse & Infrastructure
-
 # To-Do List App
 
 Este proyecto es una aplicación de **To-Do List** desarrollada en **Python** utilizando el framework **Flask** para el backend, **HTML y CSS** para el frontend estático, y **SQLite** como base de datos. Además, el proyecto está preparado para ejecutarse dentro de un contenedor de **Docker**.
@@ -23,8 +22,7 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 
 # Estructura del proyecto 
-<img width="681" alt="image" src="https://github.com/user-attachments/assets/837efa00-f14d-4ad3-bc53-4f7393ccb388">
-
+<img width="565" alt="image" src="https://github.com/user-attachments/assets/8be79efe-c12c-4939-8f8c-8875ddc614c1">
 
 # Contenerización con Docker
 Para ejecutar la aplicación utilizando contenedores de Docker, seguir estos pasos:
@@ -42,4 +40,7 @@ Una vez que la imagen esté construida, ejecuta el contenedor en modo detached (
 - Añadir tarea: Escribe el nombre de una nueva tarea en el formulario y haz clic en "Añadir".
 - Eliminar tarea: Haz clic en "Borrar" junto a la tarea que deseas eliminar.
 
+## Autores
+- Esteban Samayoa
+- Nickolas Nolte
 
