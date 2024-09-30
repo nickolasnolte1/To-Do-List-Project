@@ -30,18 +30,15 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
    cd todo-app
 
 # Estructura del proyecto 
-```mermaid
-graph TD;
-    A[ToDoApp/] --> B[app.py - Archivo principal de la aplicación Flask]
-    A --> C[requirements.txt - Dependencias del proyecto]
-    A --> D[templates/ - Contiene las plantillas HTML]
-    D --> E[index.html]
-    A --> F[static/ - Archivos estáticos CSS e imágenes]
-    F --> G[style.css]
-    A --> H[todo.db - Base de datos SQLite]
-    A --> I[Dockerfile - Archivo para contenerizar la aplicación con Docker]
-```
-
+ToDoApp/
+├── app.py               # Archivo principal de la aplicación Flask
+├── requirements.txt     # Dependencias del proyecto
+├── templates/           # Contiene las plantillas HTML
+│   └── index.html
+├── static/              # Archivos estáticos (CSS, imágenes, etc.)
+│   └── style.css
+├── todo.db              # Base de datos SQLite
+└── Dockerfile
 
 
 # Contenerización con Docker
