@@ -30,15 +30,8 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
    cd todo-app
 
 # Estructura del proyecto 
-ToDoApp/
-├── app.py               # Archivo principal de la aplicación Flask
-├── requirements.txt     # Dependencias del proyecto
-├── templates/           # Contiene las plantillas HTML
-│   └── index.html
-├── static/              # Archivos estáticos (CSS, imágenes, etc.)
-│   └── style.css
-├── todo.db              # Base de datos SQLite
-└── Dockerfile           # Archivo para contenerizar la aplicación con Docker
+<img width="681" alt="image" src="https://github.com/user-attachments/assets/837efa00-f14d-4ad3-bc53-4f7393ccb388">
+
 
 
 
