@@ -35,10 +35,10 @@ ToDoApp/
 ├── requirements.txt     # Dependencias del proyecto
 ├── templates/           # Contiene las plantillas HTML
 │   └── index.html
-├── static/              # Archivos estáticos (CSS, imágenes, etc.)
+├── static/              # Archivos estáticos (CSS)
 │   └── style.css
 ├── todo.db              # Base de datos SQLite
-└── Dockerfile
+└── Dockerfile           # Archivo para contenerizar la aplicación con Docker
 
 
 # Contenerización con Docker
