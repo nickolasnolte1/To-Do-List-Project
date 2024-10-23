@@ -83,9 +83,18 @@ Asegúrate de tener una cuenta en AWS para poder utilizar sus servicios.
    - ![Static Web Hosting](https://github.com/user-attachments/assets/812d95ae-6d85-4f45-bd4f-9c09913e4c9e)
    - ![Guardar cambios](https://github.com/user-attachments/assets/49d37a6c-0947-4ab5-9f59-24f2e196bf94)
 
-### 5. Kubernetes (Google Cloud)
-**Nota:** Configuración pendiente.
+### 5. Contenerizar el Backend con Kubernetes en Google Cloud Platform (GCP)
 
+Para contenerizar el backend en GCP utilizando Kubernetes, sigue los siguientes pasos:
+
+#### 1. Instalar Google Cloud SDK
+Si aún no tienes el Google Cloud SDK instalado, sigue [esta guía](https://cloud.google.com/sdk/docs/install) para configurarlo en tu sistema local.
+
+#### 2. Autenticarse en Google Cloud
+Inicia sesión en Google Cloud con el siguiente comando:
+   ```bash
+   gcloud auth login
+```
 ---
 
 ## 📝 Uso
