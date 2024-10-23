@@ -7,8 +7,7 @@ Este proyecto es una aplicación de **To-Do List** desarrollada en **Python** ut
 
 - Añadir, eliminar y listar tareas.
 - Interfaz sencilla con un frontend estático (HTML y CSS).
-- Base de datos SQLite para almacenar las tareas.
-- Contenerización con Docker para portabilidad y despliegue fácil.
+
 
 ## Requisitos previos
 
@@ -25,17 +24,6 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 <img width="692" alt="image" src="https://github.com/user-attachments/assets/bc56cf54-1d20-41a2-921d-4e9fe249ff2e">
 
 
-# Contenerización con Docker
-Para ejecutar la aplicación utilizando contenedores de Docker, seguir estos pasos:
-1. **Construir la imagen de Docker**:
-
-   ```bash
-   docker build -t todo-app .
-2.  **Ejecutar el contenedor**:
-Una vez que la imagen esté construida, ejecuta el contenedor en modo detached (-d) y expón el puerto 5000:
-  ```bash
-  docker run -d -p 5000:5000 todo-app
-```
 
 # Uso
 - Añadir tarea: Escribe el nombre de una nueva tarea en el formulario y haz clic en "Añadir".
