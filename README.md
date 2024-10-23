@@ -5,6 +5,18 @@ Este proyecto es una aplicación de **To-Do List** desarrollada en **Python** ut
 
 ---
 
+## 📚 Tabla de Contenidos
+- [Descripción del Proyecto](#descripción-del-proyecto)
+- [Tech Stack](#tech-stack)
+- [Características](#características)
+- [Requisitos Previos](#requisitos-previos)
+- [Pasos para Construir la Solución en AWS](#pasos-para-construir-la-solución-en-aws)
+- [Uso](#uso)
+- [Deployment](#deployment)
+- [Autores](#autores)
+- [Licencia](#licencia)
+---
+
 ## 🚀 Tech Stack
 - **Base de Datos:** DynamoDB
 - **Backend:** AWS Lambda, Python
