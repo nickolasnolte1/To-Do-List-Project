@@ -77,7 +77,7 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 2. En el menú de la izquierda, ve a la sección **Tablas** y selecciona **Crear nueva tabla**.
 
-3. **Asigna un nombre** a la tabla y configura el **Partition Key** con el nombre `task_id`.
+3. **Asigna un nombre** a la tabla y configura el **Partition Key** con el nombre `task_id`, en formato string .
    - Este campo `task_id` será el identificador único de cada tarea en la tabla.
 
 4. **Mantén activada la opción "Default Settings"** para que AWS configure automáticamente los parámetros predeterminados de capacidad y seguridad.
