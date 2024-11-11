@@ -58,7 +58,7 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 3. En la sección **Trusted entity type**, selecciona **AWS Service** como tipo de entidad de confianza.
 
-4. En el campo **Use Case**, elige **Lambda** y selecciona **Amazon DynamoDB Accelerator (DAX) - DynamoDB Access**.
+4. En el campo **Use Case**, elige **Lambda**.
    - <img width="807" alt="image" src="https://github.com/user-attachments/assets/5d3e25e8-9fd8-44d0-9846-db79131a339e">
 
 
@@ -145,11 +145,21 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 Con estos pasos, tu bucket S3 estará configurado para servir el frontend de la aplicación como un sitio web estático.
 
 ### 6. Deploy
-1. Ir nuevamente al servicio de Lambda en la consola de AWS.
-2. Copiar el link del API ENDPOINT
-   - <img width="920" alt="image" src="https://github.com/user-attachments/assets/0de64cd6-15be-4e3f-9bee-97711c15ad68">
-3. Colocar ese link en la línea 93 del código del frontend (index.html)y guardar el archivo.
-4. Cargar el archivo modificado de HTML al Bucket de S3.
+
+1. **Accede al servicio de Lambda** en la consola de AWS.
+
+2. **Copia el enlace del API Endpoint** generado para tu función Lambda.
+   - Este enlace es necesario para conectar el frontend con el backend.
+   - ![API Endpoint](https://github.com/user-attachments/assets/0de64cd6-15be-4e3f-9bee-97711c15ad68)
+
+3. **Actualiza el archivo `index.html` del frontend**:
+   - Abre el archivo `index.html`.
+   - Reemplaza la URL de la línea 93 con el **API Endpoint** copiado.
+   - Guarda el archivo una vez que hayas hecho el cambio.
+
+4. **Sube el archivo HTML actualizado** al bucket de S3.
+   - Accede al bucket S3 que configuraste para el frontend y carga el archivo `index.html` modificado para que el frontend pueda comunicarse con el backend.
+
 
 
 ---
