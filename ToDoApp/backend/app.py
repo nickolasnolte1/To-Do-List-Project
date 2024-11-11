@@ -1,51 +1,98 @@
-import os
-from flask import Flask, jsonify, request
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+import boto3
+import json
+import uuid
 
-app = Flask(__name__)
 
-database_url = os.getenv('DATABASE_URL')
-if not database_url:
-    raise RuntimeError("DATABASE_URL is not set. Flask cannot connect to a database!")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = database_url
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+dynamo = boto3.client('dynamodb')
 
-db = SQLAlchemy(app)
 
-# Define the Todo model
-class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+TABLE_NAME = 'todolist'
 
-# API route to fetch all tasks
-@app.route('/api/todos', methods=['GET'])
-def get_tasks():
-    tasks = Todo.query.all()
-    tasks_list = [{'id': task.id, 'title': task.title} for task in tasks]
-    return jsonify(tasks_list)
 
-# API route to add a new task
-@app.route('/api/add', methods=['POST'])
-def add_task():
-    title = request.form.get('title')
-    if title:
-        new_task = Todo(title=title)
-        db.session.add(new_task)
-        db.session.commit()
-    return jsonify({"message": "Task added successfully"})
 
-# API route to delete a task
-@app.route('/api/delete/<int:id>', methods=['DELETE'])
-def delete_task(id):
-    task_to_delete = Todo.query.get_or_404(id)
-    db.session.delete(task_to_delete)
-    db.session.commit()
-    return jsonify({"message": "Task deleted successfully"})
+def respond(err, res=None):
+    return {
+        'statusCode': '400' if err else '200',
+        'body': json.dumps({'error': err}) if err else json.dumps(res),
+        'headers': {
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Headers" : "Content-Type",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+        },
+    }
 
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()  # Create database tables in PostgreSQL if they don't exist
-    app.run(host='0.0.0.0', port=5050)
+
+def lambda_handler(event, context):
+    operation = event['httpMethod']
+
+    
+    operations = {
+        'GET': handle_get_tasks,
+        'POST': handle_add_task,
+        'DELETE': handle_delete_task
+    }
+
+    if operation in operations:
+        return operations[operation](event)
+    else:
+        return respond(f'Unsupported method "{operation}"')
+
+
+
+def handle_get_tasks(event):
+    try:
+        response = dynamo.scan(TableName=TABLE_NAME)
+        tasks = response.get('Items', [])
+        return respond(None, tasks)
+    except Exception as e:
+        return respond(str(e))
+
+
+
+def handle_add_task(event):
+    try:
+        body = json.loads(event['body'])
+        task_title = body.get('title')
+
+        if not task_title:
+            return respond("Missing task title")
+
+       
+        task_id = str(uuid.uuid4())
+
+       
+        dynamo.put_item(
+            TableName=TABLE_NAME,
+            Item={
+                'task_id': {'S': task_id},
+                'title': {'S': task_title}
+            }
+        )
+
+        return respond(None, {'message': 'Task added successfully', 'task_id': task_id})
+    except Exception as e:
+        return respond(str(e))
+
+
+
+def handle_delete_task(event):
+    try:
+        body = json.loads(event['body'])
+        task_id = body.get('task_id')
+
+        if not task_id:
+            return respond("Missing task ID")
+
+        
+        dynamo.delete_item(
+            TableName=TABLE_NAME,
+            Key={
+                'task_id': {'S': task_id}
+            }
+        )
+
+        return respond(None, {'message': 'Task deleted successfully'})
+    except Exception as e:
+        return respond(str(e))

@@ -79,61 +79,67 @@
     <div class="container">
         <h1>To-Do List</h1>
 
-        <!-- Form to add a new task -->
+    
         <form id="add-task-form">
             <input type="text" id="task-title" placeholder="Nueva tarea" required>
             <button type="submit">Añadir</button>
         </form>
 
-        <!-- Task list -->
+       
         <ul id="todo-list"></ul>
     </div>
 
     <script>
+        const apiUrl = "";
+
+        
         function fetchTasks() {
-    fetch("http://localhost:5050/api/todos")  // Use localhost instead of backend
-        .then(response => response.json())
-        .then(data => {
-            const list = document.getElementById('todo-list');
-            list.innerHTML = '';  // Clear the list
-            data.forEach(task => {
-                const listItem = document.createElement('li');
-                listItem.innerHTML = `
-                    ${task.title}
-                    <button onclick="deleteTask(${task.id})" class="delete">Borrar</button>
-                `;
-                list.appendChild(listItem);
-            });
-        })
-        .catch(err => console.error('Error fetching tasks:', err));
-    }
+            fetch(`${apiUrl}`)
+                .then(response => response.json())
+                .then(data => {
+                    const list = document.getElementById('todo-list');
+                    list.innerHTML = ''; 
+                    data.forEach(task => {
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `
+                            ${task.title.S}
+                            <button onclick="deleteTask('${task.task_id.S}')" class="delete">Borrar</button>
+                        `;
+                        list.appendChild(listItem);
+                    });
+                })
+                .catch(err => console.error('Error fetching tasks:', err));
+        }
 
         document.getElementById('add-task-form').addEventListener('submit', function(event) {
             event.preventDefault();
             const title = document.getElementById('task-title').value;
-            fetch("http://localhost:5050/api/add", {
+
+            fetch(`${apiUrl}`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({ title: title })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title: title })
             })
             .then(response => response.json())
             .then(() => {
-                document.getElementById('task-title').value = '';  // Clear input
-                fetchTasks();  // Refresh the task list
+                document.getElementById('task-title').value = '';  
+                fetchTasks();  
             })
             .catch(err => console.error('Error adding task:', err));
         });
 
-        // Function to handle deleting a task
+    
         function deleteTask(id) {
-            fetch(`http://localhost:5050/api/delete/${id}`, {
-                method: 'DELETE'
+            fetch(`${apiUrl}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ task_id: id })
             })
-            .then(() => fetchTasks())  // Refresh the task list after deleting
+            .then(() => fetchTasks())  
             .catch(err => console.error('Error deleting task:', err));
         }
 
-        // Fetch tasks on page load
+
         fetchTasks();
     </script>
 </body>
