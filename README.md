@@ -146,27 +146,37 @@ Con estos pasos, tu bucket S3 estará configurado para servir el frontend de la 
 
 ### 6. Deploy
 
-1. **Accede al servicio de Lambda** en la consola de AWS.
+1. **Accede al servicio de Lambda** en la consola de AWS para obtener el enlace del API Endpoint.
 
 2. **Copia el enlace del API Endpoint** generado para tu función Lambda.
-   - Este enlace es necesario para conectar el frontend con el backend.
+   - Este enlace permite que el frontend se comunique con el backend.
    - ![API Endpoint](https://github.com/user-attachments/assets/0de64cd6-15be-4e3f-9bee-97711c15ad68)
 
 3. **Actualiza el archivo `index.html` del frontend**:
    - Abre el archivo `index.html`.
-   - Reemplaza la URL de la línea 93 con el **API Endpoint** copiado.
-   - ![image](https://github.com/user-attachments/assets/7758e581-0b11-45c4-ae88-6c3c738823ca)
-   - Guarda el archivo una vez que hayas hecho el cambio.
+   - En la línea 93, reemplaza la URL existente con el **API Endpoint** copiado.
+   - ![Actualizar URL](https://github.com/user-attachments/assets/7758e581-0b11-45c4-ae88-6c3c738823ca)
+   - Guarda el archivo después de realizar el cambio.
 
-4. **Sube el archivo HTML actualizado** al bucket de S3.
-   - Accede al bucket S3 que configuraste para el frontend y carga el archivo `index.html` modificado para que el frontend pueda comunicarse con el backend.
+4. **Sube el archivo HTML actualizado** al bucket S3:
+   - Accede a tu bucket S3 configurado para el frontend y carga el archivo `index.html` modificado. Esto permite que el frontend haga peticiones al backend a través del API Endpoint.
 
-5. **Abrir Google Chrome con la opción de CORS desactivada**
-   - Abrir la terminal de la computadora, copiar y ejecutar el siguiente comando:
-   - MacOS: open -na "Google Chrome" --args --disable-web-security --user-data-dir="/tmp/chrome_dev"
-   - Windows: C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="C:/chrome_dev
-6. Copiar el link del "Object URL" en Google Chrome.
-   ![image](https://github.com/user-attachments/assets/0de75fb7-9a0e-4178-ace3-6a447b51cb1b)
+5. **Inicia Google Chrome con CORS deshabilitado** (para pruebas locales):
+   - Abre la terminal en tu computadora y ejecuta el siguiente comando según tu sistema operativo:
+   - **MacOS**:
+     ```bash
+     open -na "Google Chrome" --args --disable-web-security --user-data-dir="/tmp/chrome_dev"
+     ```
+   - **Windows**:
+     ```bash
+     "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="C:/chrome_dev"
+     ```
+   - Este comando abre Chrome con CORS deshabilitado, permitiendo que el frontend se comunique con el backend sin restricciones de seguridad de origen.
+
+6. **Accede a la aplicación**:
+   - Copia el enlace de **Object URL** de tu archivo HTML en S3 y pégalo en Google Chrome (con CORS deshabilitado).
+   - ![Object URL](https://github.com/user-attachments/assets/0de75fb7-9a0e-4178-ace3-6a447b51cb1b)
+
 
 
 ---
