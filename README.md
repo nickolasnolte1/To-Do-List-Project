@@ -46,22 +46,27 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 ## 🌐 Pasos para construir la solución en AWS
 
-### 1. Crear una cuenta en AWS
-Asegúrate de tener una cuenta en AWS para poder utilizar sus servicios.
-
 ### 2. Crear un usuario en IAM
-1. Accede al servicio de IAM dentro de la consola de AWS.
-   - <img width="906" alt="image" src="https://github.com/user-attachments/assets/3fe773ed-cc03-4b59-9f17-e4fb93398ca3">
-2. Crear un usuario de IAM.
-   - <img width="1050" alt="image" src="https://github.com/user-attachments/assets/9860683f-e0c5-448c-a406-2507906d07d8">
-3. Asignar un nombre al usuario.
-4. Seleccionar la opción de "Attach Policies Directly"
-   - <img width="1033" alt="image" src="https://github.com/user-attachments/assets/8a0a0665-160a-4a11-9f10-10b6815ceb75">
-5. Asignarle los siguientes permisos:
-   - AWSLambda_FullAccess
-   - AmazonDynamoDBFullAccess
-   - AmazonS3FullAccess
 
+1. **Accede al servicio de IAM** en la consola de AWS.
+   - ![Acceder a IAM](https://github.com/user-attachments/assets/3fe773ed-cc03-4b59-9f17-e4fb93398ca3)
+
+2. **Crea un nuevo usuario** en IAM.
+   - ![Crear usuario](https://github.com/user-attachments/assets/9860683f-e0c5-448c-a406-2507906d07d8)
+
+3. **Asigna un nombre** descriptivo al usuario para identificarlo fácilmente.
+
+4. En la sección de permisos, selecciona la opción **"Attach Policies Directly"**.
+   - ![Attach Policies Directly](https://github.com/user-attachments/assets/8a0a0665-160a-4a11-9f10-10b6815ceb75)
+
+5. **Asigna los siguientes permisos** al usuario para que tenga acceso a los servicios necesarios:
+   - `AWSLambda_FullAccess`
+   - `AmazonDynamoDBFullAccess`
+   - `AmazonS3FullAccess`
+
+6. Finaliza la creación del usuario siguiendo los pasos restantes en la consola de AWS.
+
+  
 
 
 ### 3. Configuración de la Base de Datos (DynamoDB)
