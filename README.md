@@ -135,16 +135,34 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
    - Esto es necesario para que el frontend de la aplicación sea accesible desde internet.
    - ![Deshabilitar acceso público](https://github.com/user-attachments/assets/76977b0c-0e48-4af5-9e37-13ada9a2429f)
 
-
-4. En el menú del bucket, selecciona **Properties**.
+4. Una vez creado el bucket, dirígete a **Properties**.
    - ![Properties S3](https://github.com/user-attachments/assets/844bd1a6-ca76-4679-84e0-abc4b62a6faf)
 
-5. En la sección **Static Web Hosting**, habilita la opción para que el bucket pueda servir el contenido del frontend como un sitio web estático.
-   - Haz clic en **Editar**, elige la opción **Enable**, y guarda los cambios.
+5. En la sección **Static Web Hosting**, habilita la opción para que el bucket sirva el contenido del frontend como un sitio web estático.
+   - Haz clic en **Editar**, selecciona **Enable**, y guarda los cambios.
    - ![Static Web Hosting](https://github.com/user-attachments/assets/812d95ae-6d85-4f45-bd4f-9c09913e4c9e)
    - ![Guardar cambios](https://github.com/user-attachments/assets/49d37a6c-0947-4ab5-9f59-24f2e196bf94)
 
-Con estos pasos, tu bucket S3 estará configurado para servir el frontend de la aplicación como un sitio web estático.
+6. **Configura la política de permisos del bucket** para permitir acceso público a los archivos:
+   - Ve a la pestaña **Permissions** del bucket y desplázate hasta **Bucket Policy**.
+   - Agrega la siguiente política JSON, reemplazando `"your-bucket-name"` con el nombre de tu bucket:
+     ```json
+     {
+       "Version": "2012-10-17",
+       "Statement": [
+         {
+           "Effect": "Allow",
+           "Principal": "*",
+           "Action": "s3:GetObject",
+           "Resource": "arn:aws:s3:::your-bucket-name/*"
+         }
+       ]
+     }
+     ```
+   - Esto permite que los archivos en el bucket sean accesibles públicamente para todos los usuarios.
+
+Con estos pasos, tu bucket S3 estará configurado para servir el frontend de la aplicación como un sitio web estático, accesible públicamente.
+
 
 ### 6. Deploy
 
