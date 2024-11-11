@@ -51,22 +51,19 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 1. **Accede al servicio de IAM** en la consola de AWS.
    - ![Acceder a IAM](https://github.com/user-attachments/assets/3fe773ed-cc03-4b59-9f17-e4fb93398ca3)
 
-2. **Crea un nuevo usuario** en IAM.
-   - ![Crear usuario](https://github.com/user-attachments/assets/9860683f-e0c5-448c-a406-2507906d07d8)
+2. **Crea un nuevo rol** en IAM.
+   - <img width="1050" alt="image" src="https://github.com/user-attachments/assets/57b2ae28-49cb-4d52-9d27-44ede59eb689">
 
-3. **Asigna un nombre** descriptivo al usuario para identificarlo fácilmente.
+4. En "trusted entity type" seleccionar AWS Service.
+5. En "Use Case" seleccionar DynamoDB y "Amazon Dynamo DB Accelerator (DAX) - Dynamo DB Access.
 
-4. En la sección de permisos, selecciona la opción **"Attach Policies Directly"**.
-   - ![Attach Policies Directly](https://github.com/user-attachments/assets/8a0a0665-160a-4a11-9f10-10b6815ceb75)
-
-5. **Asigna los siguientes permisos** al usuario para que tenga acceso a los servicios necesarios:
-   - `AWSLambda_FullAccess`
+6. **Asigna los siguientes permisos** al usuario para que tenga acceso a los servicios necesarios:
    - `AmazonDynamoDBFullAccess`
-   - `AmazonS3FullAccess`
-
-6. Finaliza la creación del usuario siguiendo los pasos restantes en la consola de AWS.
-
   
+7. **Asigna un nombre** descriptivo al rol para identificarlo fácilmente.
+
+8. Finaliza la creación del rol siguiendo los pasos restantes en la consola de AWS.
+
 
 
 ### 3. Configuración de la Base de Datos (DynamoDB)
