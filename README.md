@@ -71,9 +71,9 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 ### 3. Configuración de la Base de Datos (DynamoDB)
 1. Accede al servicio de DynamoDB en tu consola de AWS.
+ - ![DynamoDB](https://github.com/user-attachments/assets/519086f6-4a4c-48df-b3d9-d2974cd5cc00)
 2. En la sección de "Tablas" en el menú de la izquierda, selecciona **Crear nueva tabla**.
-3. Asigna un nombre a la tabla y un **Partition Key** (ejemplo: `task_id`).
-   - ![DynamoDB](https://github.com/user-attachments/assets/519086f6-4a4c-48df-b3d9-d2974cd5cc00)
+3. Asigna un nombre a la tabla y un **Partition Key** (`task_id`).
 4. Deja la opción de "Default Settings" activada y crea la tabla.
 
 ### 4. Configuración de la Función Lambda
@@ -81,6 +81,10 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
    - ![Lambda](https://github.com/user-attachments/assets/288d40fa-d1d6-4b6f-a20a-279a144ced25)
 2. En la sección de "Funciones", selecciona **Crear una nueva función**.
    - Asigna un nombre a la función.
+   - Selecciona la opción de "Use a Blueprint"
+   - Seleccionar la opción que dice "Create a microservice that interacts with a DDBB table" con Python 3.10
+   - <img width="711" alt="image" src="https://github.com/user-attachments/assets/ab9436ad-a323-4b30-a9b4-ff1bbad98e20">
+
 3. En la sección de "Code", carga o copia el código del backend. **Recuerda** presionar "Deploy" cada vez que hagas un cambio.
    - ![Code Lambda](https://github.com/user-attachments/assets/0973bbc6-ba7f-4bd2-a41a-0bd76ecd785b)
 4. Ve a la sección de configuración y selecciona el enlace con el nombre de la función.
