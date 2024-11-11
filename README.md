@@ -3,11 +3,6 @@
 
 ---
 
-## 💡 Descripción del Proyecto
-La aplicación **To-Do List** permite a los usuarios organizar sus tareas diarias de manera sencilla y eficiente. El objetivo es proporcionar una interfaz simple para que cualquier persona pueda gestionar sus pendientes, mientras que en el backend se utilizan servicios de AWS para asegurar escalabilidad y disponibilidad en la nube.
-
----
-
 ## 📚 Tabla de Contenidos
 - [Descripción del Proyecto](#💡-descripción-del-proyecto)
 - [Tech Stack](#🚀-tech-stack)
@@ -18,6 +13,11 @@ La aplicación **To-Do List** permite a los usuarios organizar sus tareas diaria
 - [Deployment](#🚀-deployment)
 - [Autores](#👥-autores)
 - [Licencia](#📄-licencia)
+
+---
+
+## 💡 Descripción del Proyecto
+La aplicación **To-Do List** permite a los usuarios organizar sus tareas diarias de manera sencilla y eficiente. El objetivo es proporcionar una interfaz simple para que cualquier persona pueda gestionar sus pendientes, mientras que en el backend se utilizan servicios de AWS para asegurar escalabilidad y disponibilidad en la nube.
 
 ---
 
@@ -49,14 +49,29 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 ### 1. Crear una cuenta en AWS
 Asegúrate de tener una cuenta en AWS para poder utilizar sus servicios.
 
-### 2. Configuración de la Base de Datos (DynamoDB)
+### 2. Crear un usuario en IAM
+1. Accede al servicio de IAM dentro de la consola de AWS.
+   - <img width="906" alt="image" src="https://github.com/user-attachments/assets/3fe773ed-cc03-4b59-9f17-e4fb93398ca3">
+2. Crear un usuario de IAM.
+   - <img width="1050" alt="image" src="https://github.com/user-attachments/assets/9860683f-e0c5-448c-a406-2507906d07d8">
+3. Asignar un nombre al usuario.
+4. Seleccionar la opción de "Attach Policies Directly"
+   - <img width="1033" alt="image" src="https://github.com/user-attachments/assets/8a0a0665-160a-4a11-9f10-10b6815ceb75">
+5. Asignarle los siguientes permisos:
+   - AWSLambda_FullAccess
+   - AmazonDynamoDBFullAccess
+   - AmazonS3FullAccess
+
+
+
+### 3. Configuración de la Base de Datos (DynamoDB)
 1. Accede al servicio de DynamoDB en tu consola de AWS.
 2. En la sección de "Tablas" en el menú de la izquierda, selecciona **Crear nueva tabla**.
 3. Asigna un nombre a la tabla y un **Partition Key** (ejemplo: `task_id`).
    - ![DynamoDB](https://github.com/user-attachments/assets/519086f6-4a4c-48df-b3d9-d2974cd5cc00)
 4. Deja la opción de "Default Settings" activada y crea la tabla.
 
-### 3. Configuración de la Función Lambda
+### 4. Configuración de la Función Lambda
 1. Accede al servicio de Lambda en tu consola de AWS.
    - ![Lambda](https://github.com/user-attachments/assets/288d40fa-d1d6-4b6f-a20a-279a144ced25)
 2. En la sección de "Funciones", selecciona **Crear una nueva función**.
@@ -68,7 +83,7 @@ Asegúrate de tener una cuenta en AWS para poder utilizar sus servicios.
 5. En la opción "CORS" en el menú de la izquierda, coloca un asterisco (*) en cada campo y guarda los cambios.
    - ![CORS Lambda](https://github.com/user-attachments/assets/81be510e-a0c1-4b01-9ab4-0a3d82c146dc)
 
-### 4. Configuración del Bucket S3
+### 5. Configuración del Bucket S3
 1. Accede al servicio de S3 en tu consola de AWS.
    - ![S3](https://github.com/user-attachments/assets/f3e15276-e833-4e24-b3e5-96f0a358f657)
 2. En la sección de "Buckets", selecciona **Crear un nuevo bucket**.
@@ -83,18 +98,7 @@ Asegúrate de tener una cuenta en AWS para poder utilizar sus servicios.
    - ![Static Web Hosting](https://github.com/user-attachments/assets/812d95ae-6d85-4f45-bd4f-9c09913e4c9e)
    - ![Guardar cambios](https://github.com/user-attachments/assets/49d37a6c-0947-4ab5-9f59-24f2e196bf94)
 
-### 5. Contenerizar el Backend con Kubernetes en Google Cloud Platform (GCP)
 
-Para contenerizar el backend en GCP utilizando Kubernetes, sigue los siguientes pasos:
-
-#### 1. Instalar Google Cloud SDK
-Si aún no tienes el Google Cloud SDK instalado, sigue [esta guía](https://cloud.google.com/sdk/docs/install) para configurarlo en tu sistema local.
-
-#### 2. Autenticarse en Google Cloud
-Inicia sesión en Google Cloud con el siguiente comando:
-   ```bash
-   gcloud auth login
-```
 ---
 
 ## 📝 Uso
