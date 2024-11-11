@@ -56,8 +56,9 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 3. En la sección **Trusted entity type**, selecciona **AWS Service** como tipo de entidad de confianza.
 
-4. En el campo **Use Case**, elige **DynamoDB** y selecciona **Amazon DynamoDB Accelerator (DAX) - DynamoDB Access**.
-   - ![Seleccionar DAX](https://github.com/user-attachments/assets/f44b3159-9728-4160-8845-07c2d7fe7d6b)
+4. En el campo **Use Case**, elige **Lambda** y selecciona **Amazon DynamoDB Accelerator (DAX) - DynamoDB Access**.
+   - <img width="807" alt="image" src="https://github.com/user-attachments/assets/5d3e25e8-9fd8-44d0-9846-db79131a339e">
+
 
 5. **Asigna los permisos necesarios** al rol para que tenga acceso a los servicios requeridos:
    - `AmazonDynamoDBFullAccess`
