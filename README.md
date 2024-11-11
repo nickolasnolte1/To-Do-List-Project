@@ -155,6 +155,7 @@ Con estos pasos, tu bucket S3 estará configurado para servir el frontend de la 
 3. **Actualiza el archivo `index.html` del frontend**:
    - Abre el archivo `index.html`.
    - Reemplaza la URL de la línea 93 con el **API Endpoint** copiado.
+   - ![image](https://github.com/user-attachments/assets/7758e581-0b11-45c4-ae88-6c3c738823ca)
    - Guarda el archivo una vez que hayas hecho el cambio.
 
 4. **Sube el archivo HTML actualizado** al bucket de S3.
