@@ -69,42 +69,80 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 
 ### 3. Configuración de la Base de Datos (DynamoDB)
-1. Accede al servicio de DynamoDB en tu consola de AWS.
- - ![DynamoDB](https://github.com/user-attachments/assets/519086f6-4a4c-48df-b3d9-d2974cd5cc00)
-2. En la sección de "Tablas" en el menú de la izquierda, selecciona **Crear nueva tabla**.
-3. Asigna un nombre a la tabla y un **Partition Key** (`task_id`).
-4. Deja la opción de "Default Settings" activada y crea la tabla.
+
+1. **Accede al servicio de DynamoDB** en la consola de AWS.
+   - ![DynamoDB](https://github.com/user-attachments/assets/519086f6-4a4c-48df-b3d9-d2974cd5cc00)
+
+2. En el menú de la izquierda, ve a la sección **Tablas** y selecciona **Crear nueva tabla**.
+
+3. **Asigna un nombre** a la tabla y configura el **Partition Key** con el nombre `task_id`.
+   - Este campo `task_id` será el identificador único de cada tarea en la tabla.
+
+4. **Mantén activada la opción "Default Settings"** para que AWS configure automáticamente los parámetros predeterminados de capacidad y seguridad.
+
+5. Haz clic en **Crear tabla** para finalizar la configuración.
+
 
 ### 4. Configuración de la Función Lambda
-1. Accede al servicio de Lambda en tu consola de AWS.
-   - ![Lambda](https://github.com/user-attachments/assets/288d40fa-d1d6-4b6f-a20a-279a144ced25)
-2. En la sección de "Funciones", selecciona **Crear una nueva función**.
-   - Asigna un nombre a la función.
-   - Selecciona la opción de "Use a Blueprint"
-   - Seleccionar la opción que dice "Create a microservice that interacts with a DDBB table" con Python 3.10
-   - <img width="711" alt="image" src="https://github.com/user-attachments/assets/ab9436ad-a323-4b30-a9b4-ff1bbad98e20">
 
-3. En la sección de "Code", carga o copia el código del backend. **Recuerda** presionar "Deploy" cada vez que hagas un cambio.
+1. **Accede al servicio de Lambda** en la consola de AWS.
+   - ![Lambda](https://github.com/user-attachments/assets/288d40fa-d1d6-4b6f-a20a-279a144ced25)
+
+2. En la sección de **Funciones**, selecciona **Crear una nueva función**.
+   - Asigna un **nombre descriptivo** a la función.
+   - Selecciona la opción **"Use a Blueprint"**.
+   - En los blueprints disponibles, selecciona **"Create a microservice that interacts with a DDBB table"** y elige **Python 3.10** como runtime.
+   - ![Blueprint Lambda](https://github.com/user-attachments/assets/ab9436ad-a323-4b30-a9b4-ff1bbad98e20)
+
+3. En la configuración de permisos, selecciona **"Use an existing role"** y elige el rol que creaste anteriormente en IAM para este propósito.
+
+4. En la sección de **API Gateway trigger**:
+   - Selecciona **Create New API** y elige **HTTP API** como tipo de API.
+   - En **Seguridad**, selecciona **"open"** para habilitar acceso sin autenticación.
+   - ![API Gateway Trigger](https://github.com/user-attachments/assets/c9accd23-8ef3-4cfe-9a1c-fca001f82ecf)
+
+5. Haz clic en **Crear función** para finalizar la configuración inicial de la función Lambda.
+
+6. En la sección de **Code**, carga o copia el código del backend (archivo `app.py`). **Recuerda** presionar **Deploy** cada vez que realices cambios en el código para que se apliquen.
    - ![Code Lambda](https://github.com/user-attachments/assets/0973bbc6-ba7f-4bd2-a41a-0bd76ecd785b)
-4. Ve a la sección de configuración y selecciona el enlace con el nombre de la función.
+
+7. Ve a la sección de **Configuration** y selecciona el enlace con el nombre de la función para abrir una nueva pestaña de configuración avanzada.
    - ![Configuración Lambda](https://github.com/user-attachments/assets/62edf846-16bd-44db-b81a-54b17ed5c564)
-5. En la opción "CORS" en el menú de la izquierda, coloca un asterisco (*) en cada campo y guarda los cambios.
-   - ![CORS Lambda](https://github.com/user-attachments/assets/81be510e-a0c1-4b01-9ab4-0a3d82c146dc)
+
+8. En el menú de la izquierda, selecciona **CORS** (Cross-Origin Resource Sharing):
+   - Haz clic en **Configure** y coloca un asterisco (*) en cada campo para permitir acceso desde cualquier origen.
+   - Guarda los cambios.
+   - ![Configuración CORS](https://github.com/user-attachments/assets/42c94eeb-6765-4812-bacf-68a51684f3fa)
+
+9. Puedes cerrar la pestaña de configuración una vez que hayas guardado todos los cambios.
+
+
 
 ### 5. Configuración del Bucket S3
-1. Accede al servicio de S3 en tu consola de AWS.
+
+1. **Accede al servicio de S3** en tu consola de AWS.
    - ![S3](https://github.com/user-attachments/assets/f3e15276-e833-4e24-b3e5-96f0a358f657)
-2. En la sección de "Buckets", selecciona **Crear un nuevo bucket**.
-   - Asigna un nombre al bucket.
+
+2. En la sección **Buckets**, selecciona **Crear un nuevo bucket**.
+   - Asigna un **nombre único** al bucket para identificarlo en tu proyecto.
    - ![Crear Bucket](https://github.com/user-attachments/assets/975bcfdb-753c-4293-bbcf-86a773190c82)
-3. Deshabilita la opción de "Block all public access".
+
+3. **Deshabilita la opción "Block all public access"** para permitir el acceso público al contenido del bucket.
+   - Esto es necesario para que el frontend de la aplicación sea accesible desde internet.
    - ![Deshabilitar acceso público](https://github.com/user-attachments/assets/76977b0c-0e48-4af5-9e37-13ada9a2429f)
-4. Accede al bucket creado y carga el archivo del frontend de la aplicación en la sección de "Objects".
-5. Selecciona la opción de "Properties".
+
+4. **Carga el archivo del frontend** de la aplicación en la sección **Objects** del bucket.
+   - Una vez creado el bucket, sube los archivos HTML, CSS y cualquier otro recurso estático necesario.
+
+5. En el menú del bucket, selecciona **Properties**.
    - ![Properties S3](https://github.com/user-attachments/assets/844bd1a6-ca76-4679-84e0-abc4b62a6faf)
-6. En la sección "Static Web Hosting", habilita la opción.
+
+6. En la sección **Static Web Hosting**, habilita la opción para que el bucket pueda servir el contenido del frontend como un sitio web estático.
+   - Haz clic en **Editar**, elige la opción **Enable**, y guarda los cambios.
    - ![Static Web Hosting](https://github.com/user-attachments/assets/812d95ae-6d85-4f45-bd4f-9c09913e4c9e)
    - ![Guardar cambios](https://github.com/user-attachments/assets/49d37a6c-0947-4ab5-9f59-24f2e196bf94)
+
+Con estos pasos, tu bucket S3 estará configurado para servir el frontend de la aplicación como un sitio web estático.
 
 
 ---
