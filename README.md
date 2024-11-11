@@ -109,7 +109,7 @@ Antes de ejecutar este proyecto, asegúrate de cumplir con los siguientes requis
 5. Haz clic en **Crear función** para finalizar la configuración inicial de la función Lambda.
 
 6. En la sección de **Code**, carga o copia el código del backend (archivo `app.py`). **Recuerda** presionar **Deploy** cada vez que realices cambios en el código para que se apliquen.
-   - ![Code Lambda](<img width="959" alt="image" src="https://github.com/user-attachments/assets/44aeb5ed-845a-4765-b39c-bd04f1d73ef7">)
+   - ![Code Lambda](https://github.com/user-attachments/assets/44aeb5ed-845a-4765-b39c-bd04f1d73ef7")
 
 7. **Verifica el nombre de la tabla en el código**:
    - En la línea 10 del código, asegúrate de que el nombre de la tabla coincida exactamente con el nombre de la tabla que creaste en DynamoDB.
