@@ -200,6 +200,7 @@ Con estos pasos, tu bucket S3 estará configurado para servir el frontend de la 
    - Copia el enlace de **Object URL** de tu archivo HTML en S3 y pégalo en Google Chrome (con CORS deshabilitado).
    - ![Object URL](https://github.com/user-attachments/assets/0de75fb7-9a0e-4178-ace3-6a447b51cb1b)
 
+<img width="551" alt="image" src="https://github.com/user-attachments/assets/5c417bfb-59bf-46cc-9aeb-1078642e9d6d">
 
 
 ---
