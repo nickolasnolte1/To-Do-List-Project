@@ -46,6 +46,8 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 ## 🌐 Pasos para construir la solución en AWS
 
+### 1. Descargar el archivo de frontend de este repositorio y abrirlo en VSC, más adelante lo usaremos.
+
 ### 2. Crear un Rol en IAM
 
 1. **Accede al servicio de IAM** en la consola de AWS.
@@ -131,18 +133,23 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
    - Esto es necesario para que el frontend de la aplicación sea accesible desde internet.
    - ![Deshabilitar acceso público](https://github.com/user-attachments/assets/76977b0c-0e48-4af5-9e37-13ada9a2429f)
 
-4. **Carga el archivo del frontend** de la aplicación en la sección **Objects** del bucket.
-   - Una vez creado el bucket, sube los archivos HTML, CSS y cualquier otro recurso estático necesario.
 
-5. En el menú del bucket, selecciona **Properties**.
+4. En el menú del bucket, selecciona **Properties**.
    - ![Properties S3](https://github.com/user-attachments/assets/844bd1a6-ca76-4679-84e0-abc4b62a6faf)
 
-6. En la sección **Static Web Hosting**, habilita la opción para que el bucket pueda servir el contenido del frontend como un sitio web estático.
+5. En la sección **Static Web Hosting**, habilita la opción para que el bucket pueda servir el contenido del frontend como un sitio web estático.
    - Haz clic en **Editar**, elige la opción **Enable**, y guarda los cambios.
    - ![Static Web Hosting](https://github.com/user-attachments/assets/812d95ae-6d85-4f45-bd4f-9c09913e4c9e)
    - ![Guardar cambios](https://github.com/user-attachments/assets/49d37a6c-0947-4ab5-9f59-24f2e196bf94)
 
 Con estos pasos, tu bucket S3 estará configurado para servir el frontend de la aplicación como un sitio web estático.
+
+### 6. Deploy
+1. Ir nuevamente al servicio de Lambda en la consola de AWS.
+2. Copiar el link del API ENDPOINT
+   - <img width="920" alt="image" src="https://github.com/user-attachments/assets/0de64cd6-15be-4e3f-9bee-97711c15ad68">
+3. Colocar ese link en la línea 93 del código del frontend (index.html)y guardar el archivo.
+4. Cargar el archivo modificado de HTML al Bucket de S3.
 
 
 ---
