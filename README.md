@@ -107,16 +107,18 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 6. En la sección de **Code**, carga o copia el código del backend (archivo `app.py`). **Recuerda** presionar **Deploy** cada vez que realices cambios en el código para que se apliquen.
    - ![Code Lambda](https://github.com/user-attachments/assets/0973bbc6-ba7f-4bd2-a41a-0bd76ecd785b)
+7. **Verifica el nombre de la tabla en el código**:
+   - En la línea 10 del código, asegúrate de que el nombre de la tabla coincida exactamente con el nombre de la tabla que creaste en DynamoDB.
 
-7. Ve a la sección de **Configuration** y selecciona el enlace con el nombre de la función para abrir una nueva pestaña de configuración avanzada.
+8. Ve a la sección de **Configuration** y selecciona el enlace con el nombre de la función para abrir una nueva pestaña de configuración avanzada.
    - ![Configuración Lambda](https://github.com/user-attachments/assets/62edf846-16bd-44db-b81a-54b17ed5c564)
 
-8. En el menú de la izquierda, selecciona **CORS** (Cross-Origin Resource Sharing):
+9. En el menú de la izquierda, selecciona **CORS** (Cross-Origin Resource Sharing):
    - Haz clic en **Configure** y coloca un asterisco (*) en cada campo para permitir acceso desde cualquier origen.
    - Guarda los cambios.
    - ![Configuración CORS](https://github.com/user-attachments/assets/42c94eeb-6765-4812-bacf-68a51684f3fa)
 
-9. Puedes cerrar la pestaña de configuración una vez que hayas guardado todos los cambios.
+10. Puedes cerrar la pestaña de configuración una vez que hayas guardado todos los cambios.
 
 
 
