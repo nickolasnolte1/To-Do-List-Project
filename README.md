@@ -46,24 +46,25 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 ## 🌐 Pasos para construir la solución en AWS
 
-### 2. Crear un usuario en IAM
+### 2. Crear un Rol en IAM
 
 1. **Accede al servicio de IAM** en la consola de AWS.
    - ![Acceder a IAM](https://github.com/user-attachments/assets/3fe773ed-cc03-4b59-9f17-e4fb93398ca3)
 
-2. **Crea un nuevo rol** en IAM.
-   - <img width="1050" alt="image" src="https://github.com/user-attachments/assets/57b2ae28-49cb-4d52-9d27-44ede59eb689">
+2. **Crea un nuevo rol** en IAM seleccionando la opción para roles.
+   - ![Crear rol](https://github.com/user-attachments/assets/57b2ae28-49cb-4d52-9d27-44ede59eb689)
 
-4. En "trusted entity type" seleccionar AWS Service.
-5. En "Use Case" seleccionar DynamoDB y "Amazon Dynamo DB Accelerator (DAX) - Dynamo DB Access.
+3. En la sección **Trusted entity type**, selecciona **AWS Service** como tipo de entidad de confianza.
 
-6. **Asigna los siguientes permisos** al usuario para que tenga acceso a los servicios necesarios:
+4. En el campo **Use Case**, elige **DynamoDB** y selecciona **Amazon DynamoDB Accelerator (DAX) - DynamoDB Access**.
+   - ![Seleccionar DAX](https://github.com/user-attachments/assets/f44b3159-9728-4160-8845-07c2d7fe7d6b)
+
+5. **Asigna los permisos necesarios** al rol para que tenga acceso a los servicios requeridos:
    - `AmazonDynamoDBFullAccess`
-  
-7. **Asigna un nombre** descriptivo al rol para identificarlo fácilmente.
 
-8. Finaliza la creación del rol siguiendo los pasos restantes en la consola de AWS.
+6. **Asigna un nombre descriptivo** al rol para identificarlo fácilmente en tu lista de roles.
 
+7. **Finaliza la creación del rol** siguiendo los pasos restantes en la consola de AWS.
 
 
 ### 3. Configuración de la Base de Datos (DynamoDB)
