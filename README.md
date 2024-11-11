@@ -161,6 +161,12 @@ Con estos pasos, tu bucket S3 estará configurado para servir el frontend de la 
 4. **Sube el archivo HTML actualizado** al bucket de S3.
    - Accede al bucket S3 que configuraste para el frontend y carga el archivo `index.html` modificado para que el frontend pueda comunicarse con el backend.
 
+5. **Abrir Google Chrome con la opción de CORS desactivada**
+   - Abrir la terminal de la computadora, copiar y ejecutar el siguiente comando:
+   - MacOS: open -na "Google Chrome" --args --disable-web-security --user-data-dir="/tmp/chrome_dev"
+   - Windows: C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="C:/chrome_dev
+6. Copiar el link del "Object URL" en Google Chrome.
+   ![image](https://github.com/user-attachments/assets/0de75fb7-9a0e-4178-ace3-6a447b51cb1b)
 
 
 ---
