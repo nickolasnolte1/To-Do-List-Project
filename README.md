@@ -35,12 +35,15 @@ La aplicación **To-Do List** permite a los usuarios organizar sus tareas diaria
 ---
 
 ## 📦 Requisitos previos
-Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes componentes:
 
-- Python 3.9 o superior
-- Flask
-- Flask-SQLAlchemy
-- Docker (opcional para contenerización)
+Antes de ejecutar este proyecto, asegúrate de cumplir con los siguientes requisitos:
+
+- **Cuenta activa de AWS**: Debes contar con una cuenta activa en Amazon Web Services.
+- **Acceso a los servicios de AWS necesarios**:
+  - **Lambda**: Para ejecutar funciones de backend.
+  - **DynamoDB**: Para almacenar y gestionar los datos de la aplicación.
+  - **S3**: Para alojar el frontend como un sitio web estático.
+
 
 ---
 
@@ -173,7 +176,7 @@ Con estos pasos, tu bucket S3 estará configurado para servir el frontend de la 
    - ![API Endpoint](https://github.com/user-attachments/assets/0de64cd6-15be-4e3f-9bee-97711c15ad68)
 
 3. **Actualiza el archivo `index.html` del frontend**:
-   - Abre el archivo `index.html`.
+   - Abre el archivo `index.html` en un editor de texto como Visual Studio Code.
    - En la línea 93, reemplaza la URL existente con el **API Endpoint** copiado.
    - ![Actualizar URL](https://github.com/user-attachments/assets/7758e581-0b11-45c4-ae88-6c3c738823ca)
    - Guarda el archivo después de realizar el cambio.
